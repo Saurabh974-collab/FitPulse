@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitPulse</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/script.js" defer></script>
+</head>
+
+<body class="home-body">
+
+<header class="navbar">
+
+<h1 class="logo">FitPulse</h1>
+
+<nav>
+<a href="home.html">Home</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="index.html">Logout</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h2>Health Anomaly Detection from Fitness Devices</h2>
+
+<p>Upload fitness device data and detect unusual health patterns.</p>
+
+<button class="upload-btn" onclick="toggleForm()">
+Upload Health Data
+</button>
+
+</div>
+
+</section>
+
+<div id="healthForm" class="health-form-container">
+
+<form class="health-form" onsubmit="saveHealthData(event)">
+
+<h3>Enter Health Data</h3>
+
+<input id="name" type="text" placeholder="Name" required>
+
+<input id="age" type="number" placeholder="Age" required>
+
+<select id="gender" required>
+<option value="">Gender</option>
+<option>Male</option>
+<option>Female</option>
+<option>Other</option>
+</select>
+
+<select id="device" required>
+<option value="">Device</option>
+<option>Fitness Watch</option>
+<option>Fitbit</option>
+<option>Smart Band</option>
+</select>
+
+<input id="heartRate" type="number" placeholder="Heart Rate (BPM)" required>
+
+<input id="bloodSys" type="number" placeholder="Blood Pressure (Systolic)" required>
+
+<input id="bloodDia" type="number" placeholder="Blood Pressure (Diastolic)" required>
+
+<input id="oxygen" type="number" placeholder="Oxygen Level (SpO2 %)" required>
+
+<input id="sleep" type="number" placeholder="Sleep Hours" required>
+
+<input id="steps" type="number" placeholder="Steps Count" required>
+
+<button type="submit">Submit Data</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

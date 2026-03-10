@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FitPulse Dashboard</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="js/script.js" defer></script>
+
+</head>
+
+<body class="dashboard-body">
+
+<div class="dashboard-layout">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2>FitPulse</h2>
+
+<a href="dashboard.html">Dashboard</a>
+<a href="home.html">Upload Data</a>
+<a href="index.html">Logout</a>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content">
+
+<h1>Health Dashboard</h1>
+
+
+<!-- HEALTH METRICS -->
+
+<div class="metrics">
+
+<div class="metric-card">
+<h3>Name</h3>
+<p id="dName">--</p>
+</div>
+
+<div class="metric-card">
+<h3>Heart Rate</h3>
+<p id="dHeart">--</p>
+</div>
+
+<div class="metric-card">
+<h3>Blood Pressure</h3>
+<p id="dBP">--</p>
+</div>
+
+<div class="metric-card">
+<h3>Oxygen Level</h3>
+<p id="dOxygen">--</p>
+</div>
+
+<div class="metric-card">
+<h3>Sleep</h3>
+<p id="dSleep">--</p>
+</div>
+
+<div class="metric-card">
+<h3>Steps</h3>
+<p id="dSteps">--</p>
+</div>
+
+<div class="alert-box">
+<h3>Health Alerts</h3>
+<p id="alertMessage">Checking health conditions...</p>
+</div>
+
+</div>
+
+
+<!-- REAL TIME HEART RATE GRAPH -->
+
+<div class="chart-container">
+
+<h3>Real-Time Heart Rate Monitor</h3>
+
+<canvas id="heartRateChart"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
