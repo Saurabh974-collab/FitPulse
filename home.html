@@ -1,82 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>FitPulse</title>
+
+<title>FitPulse - Log Activity</title>
+
 <link rel="stylesheet" href="css/style.css">
-<script src="js/script.js" defer></script>
+<script src="js/script.js"></script>
+
 </head>
 
-<body class="home-body">
+<body class="app-body">
 
-<header class="navbar">
+<div class="user-box" onclick="toggleMenu()">
+  <div class="avatar" id="avatar"></div>
+  <span id="userName"></span>
 
-<h1 class="logo">FitPulse</h1>
+  <div class="dropdown" id="dropdownMenu">
+    <p onclick="logout()">Logout</p>
+  </div>
+</div>
 
-<nav>
-<a href="home.html">Home</a>
+
+<div class="app-layout">
+<div class="sidebar">
+<div class="logo">FitPulse</div>
+
+<div class="menu">
 <a href="dashboard.html">Dashboard</a>
+<a class="active" href="home.html">Log Activity</a>
 <a href="index.html">Logout</a>
-</nav>
+</div>
+</div>
 
-</header>
+<div class="main-panel">
 
-<section class="hero">
+<h1>Log Health Activity</h1>
 
-<div class="hero-content">
+<div class="panel-card">
 
-<h2>Health Anomaly Detection from Fitness Devices</h2>
+<h3>Activity</h3>
 
-<p>Upload fitness device data and detect unusual health patterns.</p>
+<label>Heart Rate</label>
+<input type="range" min="0" max="200" value="0"
+id="heartRate"
+oninput="hrValue.innerText=this.value; updateHealthStatus()">
 
-<button class="upload-btn" onclick="toggleForm()">
-Upload Health Data
+<div class="value-text">
+<span id="hrValue">0</span> BPM
+</div>
+
+
+<label>Steps</label>
+<input type="range" min="0" max="20000" value="0"
+id="steps"
+oninput="stepsValue.innerText=this.value; updateHealthStatus()">
+
+<div class="value-text">
+<span id="stepsValue">0</span>
+</div>
+
+<label>Sleep</label>
+<input type="range" min="0" max="12" step="0.1" value="0"
+id="sleep"
+oninput="sleepValue.innerText=this.value; updateHealthStatus()">
+
+<div class="value-text">
+<span id="sleepValue">0</span> Hours
+</div>
+
+
+<h3>Timestamp</h3>
+
+<input type="datetime-local" id="timestamp">
+
+
+<div id="healthStatus" class="status-card">
+✓ Health Status: 
+</div>
+
+
+<button class="save-button" onclick="saveHealthData(event)">
+Save Health Entry
 </button>
 
 </div>
 
-</section>
-
-<div id="healthForm" class="health-form-container">
-
-<form class="health-form" onsubmit="saveHealthData(event)">
-
-<h3>Enter Health Data</h3>
-
-<input id="name" type="text" placeholder="Name" required>
-
-<input id="age" type="number" placeholder="Age" required>
-
-<select id="gender" required>
-<option value="">Gender</option>
-<option>Male</option>
-<option>Female</option>
-<option>Other</option>
-</select>
-
-<select id="device" required>
-<option value="">Device</option>
-<option>Fitness Watch</option>
-<option>Fitbit</option>
-<option>Smart Band</option>
-</select>
-
-<input id="heartRate" type="number" placeholder="Heart Rate (BPM)" required>
-
-<input id="bloodSys" type="number" placeholder="Blood Pressure (Systolic)" required>
-
-<input id="bloodDia" type="number" placeholder="Blood Pressure (Diastolic)" required>
-
-<input id="oxygen" type="number" placeholder="Oxygen Level (SpO2 %)" required>
-
-<input id="sleep" type="number" placeholder="Sleep Hours" required>
-
-<input id="steps" type="number" placeholder="Steps Count" required>
-
-<button type="submit">Submit Data</button>
-
-</form>
+</div>
 
 </div>
+
+<script>
+// Reset form on page load
+document.addEventListener("DOMContentLoaded", function () {
+  document.body.offsetHeight; // Force reflow
+});
+
+// Reset when user navigates back to home
+window.addEventListener("pageshow", function(event) {
+  if (event.persisted) {
+    // Page was restored from back/forward cache
+    location.reload();
+  }
+});
+</script>
 
 </body>
 </html>
