@@ -25,10 +25,23 @@
 <div class="dashboard-layout">
 
 <div class="sidebar">
-<h2 class="logo">FitPulse</h2>
-<a href="dashboard.html">Dashboard</a>
-<a href="home.html">Log Activity</a>
-<a href="index.html">Logout</a>
+  <div class="logo">
+    ⚡ FitPulse
+  </div>
+
+  <nav>
+    <a href="dashboard.html" class="nav-btn active">
+      🏠 Dashboard
+    </a>
+
+    <a href="home.html" class="nav-btn">
+      📈 Log Activity
+    </a>
+
+    <a href="index.html" class="nav-btn logout">
+      🚪 Logout
+    </a>
+  </nav>
 </div>
 
 <div class="main-content">
@@ -46,22 +59,46 @@
 
 </div>
 
-<div id="alertBox"></div>
+<div style="display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:10px; flex-wrap:wrap;">
+  <div id="alertBox" style="flex:1;"></div>
+  <div id="recommendationBox" class="recommendation-card">
+    <div class="recommendation-title">
+      💡 Recommendation
+    </div>
+    <div class="recommendation-text">
+      Maintain stable heart rate and avoid excessive stress.
+    </div>
+  </div>
+</div>
 
-<div class="chart-container">
+<div class="alert-row">
+  <input type="checkbox" id="mail">
+  <label class="switch" for="mail"></label>
+  <button class="save-btn" type="button" onclick="saveEmailAlert()">
+    Save
+  </button>
+</div>
 
-  <div class="chart-box">
-    <h3>Heart Rate Trend</h3>
-    <canvas id="heartRateChart"></canvas>
+<div class="graph-section">
+
+  <div class="graph-card">
+    <div class="graph-title">
+      ❤️ Heart Rate Trend
+    </div>
+    <canvas id="heartChart"></canvas>
   </div>
 
-  <div class="chart-box">
-    <h3>Steps Trend</h3>
-    <canvas id="stepsChart"></canvas>
+  <div class="graph-card">
+    <div class="graph-title">
+      👣 Steps Trend
+    </div>
+    <canvas id="stepChart"></canvas>
   </div>
 
-  <div class="chart-box">
-    <h3>Sleep Trend</h3>
+  <div class="graph-card">
+    <div class="graph-title">
+      😴 Sleep Trend
+    </div>
     <canvas id="sleepChart"></canvas>
   </div>
 
@@ -69,25 +106,25 @@
 
 <div class="dashboard-buttons">
 
-<button onclick="downloadCSV()">Download CSV</button>
-<button onclick="showClearOptions()">Clear Data</button>
+<button type="button" onclick="downloadCSV()">Download CSV</button>
+<button type="button" onclick="showClearOptions()">Clear Data</button>
 
 </div>
 
 <!-- OPTIONS -->
 <div id="clearOptions" style="display:none; margin-top:15px;">
 
-  <button onclick="clearAllData()">
+  <button type="button" onclick="clearAllData()">
     <i class="fas fa-trash"></i> Clear All Data
   </button>
 
-  <button onclick="enableSelection()">
+  <button type="button" onclick="enableSelection()">
     <i class="fas fa-check-circle"></i> Clear Selective Data
   </button>
 
 </div>
 
-<button id="deleteSelectedBtn" onclick="deleteSelected()" style="display:none;">
+<button type="button" id="deleteSelectedBtn" onclick="openDeleteModal()" style="display:none;">
   <i class="fas fa-trash-alt"></i> Delete Selected
 </button>
 
@@ -102,6 +139,7 @@
 <th>Heart Rate</th>
 <th>Steps</th>
 <th>Sleep</th>
+<th>Status</th>
 </tr>
 </thead>
 
@@ -113,16 +151,17 @@
 </div>
 
 <!-- CUSTOM MODAL -->
-<div id="customModal" class="modal">
+<div id="customModal" class="modal" style="display:none;">
   <div class="modal-box">
     <p id="modalText">Are you sure?</p>
 
     <div class="modal-buttons">
-      <button class="confirm-btn" onclick="confirmAction()">Yes</button>
-      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      <button type="button" class="confirm-btn" onclick="confirmDelete()">Delete</button>
+      <button type="button" class="cancel-btn" onclick="closeModal()">Cancel</button>
     </div>
   </div>
 </div>
+
 
 </body>
 </html>

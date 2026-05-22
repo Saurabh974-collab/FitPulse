@@ -9,7 +9,7 @@
 
 </head>
 
-<body class="app-body">
+<body class="dashboard-body">
 
 <div class="user-box" onclick="toggleMenu()">
   <div class="avatar" id="avatar"></div>
@@ -20,72 +20,89 @@
   </div>
 </div>
 
+<div class="dashboard-layout">
 
-<div class="app-layout">
-<div class="sidebar">
-<div class="logo">FitPulse</div>
+  <div class="sidebar">
+    <div class="logo">
+      ⚡ FitPulse
+    </div>
 
-<div class="menu">
-<a href="dashboard.html">Dashboard</a>
-<a class="active" href="home.html">Log Activity</a>
-<a href="index.html">Logout</a>
-</div>
-</div>
+    <nav>
+      <a class="nav-btn" href="dashboard.html">
+        🏠 Dashboard
+      </a>
 
-<div class="main-panel">
+      <a class="nav-btn active" href="home.html">
+        📈 Log Activity
+      </a>
 
-<h1>Log Health Activity</h1>
+      <a class="nav-btn logout" href="index.html">
+        🚪 Logout
+      </a>
+    </nav>
+  </div>
 
-<div class="panel-card">
+  <div class="main-content">
 
-<h3>Activity</h3>
+    <div class="activity-card">
 
-<label>Heart Rate</label>
-<input type="range" min="0" max="200" value="0"
-id="heartRate"
-oninput="hrValue.innerText=this.value; updateHealthStatus()">
+      <div class="activity-title">
+        📊 Log Health Activity
+      </div>
 
-<div class="value-text">
-<span id="hrValue">0</span> BPM
-</div>
+      <label class="form-label">
+        Heart Rate
+      </label>
 
+      <input type="range" min="0" max="200" value="0"
+        id="heartRate"
+        oninput="hrValue.innerText=this.value; updateHealthStatus()">
 
-<label>Steps</label>
-<input type="range" min="0" max="20000" value="0"
-id="steps"
-oninput="stepsValue.innerText=this.value; updateHealthStatus()">
+      <div class="value">
+        ❤️ <span id="hrValue">0</span> BPM
+      </div>
 
-<div class="value-text">
-<span id="stepsValue">0</span>
-</div>
+      <label class="form-label">
+        Steps
+      </label>
 
-<label>Sleep</label>
-<input type="range" min="0" max="12" step="0.1" value="0"
-id="sleep"
-oninput="sleepValue.innerText=this.value; updateHealthStatus()">
+      <input type="range" min="0" max="20000" value="0"
+        id="steps"
+        oninput="stepsValue.innerText=this.value; updateHealthStatus()">
 
-<div class="value-text">
-<span id="sleepValue">0</span> Hours
-</div>
+      <div class="value">
+        👣 <span id="stepsValue">0</span>
+      </div>
 
+      <label class="form-label">
+        Sleep
+      </label>
 
-<h3>Timestamp</h3>
+      <input type="range" min="0" max="12" step="0.1" value="0"
+        id="sleep"
+        oninput="sleepValue.innerText=this.value; updateHealthStatus()">
 
-<input type="datetime-local" id="timestamp">
+      <div class="value">
+        😴 <span id="sleepValue">0</span> Hours
+      </div>
 
+      <label class="form-label">
+        Timestamp
+      </label>
 
-<div id="healthStatus" class="status-card">
-✓ Health Status: 
-</div>
+      <input class="form-input" type="datetime-local" id="timestamp">
 
+      <div id="healthStatus" class="health-preview">
+        Health status will be analyzed after saving.
+      </div>
 
-<button class="save-button" onclick="saveHealthData(event)">
-Save Health Entry
-</button>
+      <button type="button" class="submit-btn" onclick="saveHealthData(event, this)">
+        Save Health Entry
+      </button>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </div>
 
